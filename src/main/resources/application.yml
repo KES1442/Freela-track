@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: freela-track
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/freelatrack
+    username: root
+    password: kesley13
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+    show-sql: false
+    open-in-view: false
+
+  logging:
+    level:
+      com.github.kes1442: INFO
