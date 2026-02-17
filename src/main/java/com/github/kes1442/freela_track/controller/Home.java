@@ -2,6 +2,7 @@ package com.github.kes1442.freela_track.controller;
 
 import com.github.kes1442.freela_track.dto.UserCreateDTO;
 import com.github.kes1442.freela_track.dto.UserResponseDTO;
+import com.github.kes1442.freela_track.dto.UserUpdateDTO;
 import com.github.kes1442.freela_track.service.HomeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,4 +25,9 @@ public class Home {
         return service.createUser(userCreateDTO);
     }
 
+    @PutMapping("/{id}")
+    public UserResponseDTO update(@PathVariable("id") Long id,
+                                  @RequestBody @Valid UserUpdateDTO userUpdateDTO){
+        return service.updateUser(id, userUpdateDTO);
+    }
 }

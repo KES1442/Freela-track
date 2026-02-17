@@ -2,6 +2,7 @@ package com.github.kes1442.freela_track.service;
 
 import com.github.kes1442.freela_track.dto.UserCreateDTO;
 import com.github.kes1442.freela_track.dto.UserResponseDTO;
+import com.github.kes1442.freela_track.dto.UserUpdateDTO;
 import com.github.kes1442.freela_track.entity.User;
 import com.github.kes1442.freela_track.mapper.UserMapper;
 import com.github.kes1442.freela_track.repository.Repository;
@@ -26,5 +27,15 @@ public class HomeService {
 
         return mapper.toResponse(user);
 
+    }
+
+    public UserResponseDTO updateUser(Long id, UserUpdateDTO dto){
+        User user = repository.findById(id).orElseThrow();
+
+        mapper.updateEntityFromDTO(dto, user);
+
+        repository.save(user);
+
+        return mapper.toResponse(user);
     }
 }
