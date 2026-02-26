@@ -1,23 +1,25 @@
 package com.github.kes1442.freela_track.controller;
 
-import com.github.kes1442.freela_track.dto.UserCreateDTO;
-import com.github.kes1442.freela_track.dto.UserResponseDTO;
-import com.github.kes1442.freela_track.dto.UserUpdateDTO;
-import com.github.kes1442.freela_track.service.HomeService;
+import com.github.kes1442.freela_track.dto.user.UserCreateDTO;
+import com.github.kes1442.freela_track.dto.user.UserDetailsDTO;
+import com.github.kes1442.freela_track.dto.user.UserResponseDTO;
+import com.github.kes1442.freela_track.dto.user.UserUpdateDTO;
+import com.github.kes1442.freela_track.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/")
-public class Home {
+@RequestMapping("/user")
+public class UserController {
 
     @Autowired
-    HomeService service;
+    UserService service;
 
-    @GetMapping
-    public String test(){
-        return "testing the API";
+    @GetMapping("/{id}/details")
+    public UserDetailsDTO userDetails(@PathVariable Long id){
+
+        return service.userDetails(id);
     }
 
     @PostMapping

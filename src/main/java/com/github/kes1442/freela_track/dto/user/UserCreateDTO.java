@@ -1,4 +1,4 @@
-package com.github.kes1442.freela_track.dto;
+package com.github.kes1442.freela_track.dto.user;
 
 import com.github.kes1442.freela_track.enums.Gender;
 import jakarta.validation.constraints.*;
@@ -11,9 +11,6 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class UserCreateDTO {
-
-
-    private Long id;
 
     @NotBlank(message = "Type a name!")
     @Size(min = 3, max = 50)

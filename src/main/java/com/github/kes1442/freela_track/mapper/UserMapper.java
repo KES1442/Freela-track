@@ -1,24 +1,37 @@
 package com.github.kes1442.freela_track.mapper;
 
-import com.github.kes1442.freela_track.dto.UserCreateDTO;
-import com.github.kes1442.freela_track.dto.UserResponseDTO;
-import com.github.kes1442.freela_track.dto.UserUpdateDTO;
+import com.github.kes1442.freela_track.dto.project.ProjectCreateDTO;
+import com.github.kes1442.freela_track.dto.project.ProjectResponseDTO;
+import com.github.kes1442.freela_track.dto.project.ProjectSummaryDTO;
+import com.github.kes1442.freela_track.dto.project.ProjectUpdateDTO;
+import com.github.kes1442.freela_track.dto.user.UserCreateDTO;
+import com.github.kes1442.freela_track.dto.user.UserDetailsDTO;
+import com.github.kes1442.freela_track.dto.user.UserResponseDTO;
+import com.github.kes1442.freela_track.dto.user.UserUpdateDTO;
+import com.github.kes1442.freela_track.entity.Project;
 import com.github.kes1442.freela_track.entity.User;
-import org.mapstruct.BeanMapping;
-import org.mapstruct.Mapper;
-import org.mapstruct.MappingTarget;
-import org.mapstruct.NullValuePropertyMappingStrategy;
+import org.mapstruct.*;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
-    //create
-    User toEntity(UserCreateDTO dto);
+    //create User
+    User toEntityUser(UserCreateDTO dto);
 
-    //update
+
+
+    //update User
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateEntityFromDTO(UserUpdateDTO dto, @MappingTarget User user);
+    void updateEntityUserFromDTO(UserUpdateDTO dto, @MappingTarget User user);
 
 
-    UserResponseDTO toResponse(User user);
+    //response User
+    UserResponseDTO toResponseUser(User user);
+
+    //user details
+    @Mapping(target = "projects", source = "projects")
+    UserDetailsDTO toUserDetailsDTO(User user);
+
+    ProjectSummaryDTO toProjectSummaryDTO(Project project);
+
 }

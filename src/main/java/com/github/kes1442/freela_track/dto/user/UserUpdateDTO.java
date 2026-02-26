@@ -1,4 +1,4 @@
-package com.github.kes1442.freela_track.dto;
+package com.github.kes1442.freela_track.dto.user;
 
 import com.github.kes1442.freela_track.enums.Gender;
 import jakarta.validation.constraints.Email;
